@@ -1,17 +1,36 @@
 import React from "react"
-import {View, Text, Button} from "react-native"
+import {FlatList} from "react-native"
+import {CATEGORIES} from "../data/dummy-data";
+import CategoryGridTile from "../components/CategoryGridTile";
 
 const CategoriesScreen = props => {
-    return (
-        <View>
-            <Text>The categories screen!</Text>
-            <Button onPress={() => {
+    const renderItem = (itemData) => {
+        return <CategoryGridTile
+            title={itemData.item.title}
+            color={itemData.item.color}
+            onSelect={() => {
                 props.navigation.navigate({
-                    routeName: "CategoryMeals"
+                    routeName: "CategoryMealsScreen",
+                    params: {
+                        categoryID: itemData.item.id
+                    }
                 })
             }}/>
-        </View>
+    }
+
+    return (
+        <FlatList
+            keyExtractor={(item, _) => item.id}
+            data={CATEGORIES}
+            renderItem={renderItem}
+            numColumns={2}/>
     )
 }
+
+// here we append a property in the CategoriesScreen object
+CategoriesScreen.navigationOptions = {
+    headerTitle: "Meal categories"
+}
+
 
 export default CategoriesScreen

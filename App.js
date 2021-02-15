@@ -1,9 +1,11 @@
-import {StatusBar} from 'expo-status-bar';
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import * as Font from "expo-font"
 import {AppLoading} from "expo"
 import MealsNavigator from "./navigation/MealsNavigator";
+import {enableScreens} from "react-native-screens" // This will use Fragment in Android and UIViewController for iOS for performance improvements
+
+enableScreens()
 
 const fetchFonts = () => {
     Font.loadAsync({

@@ -1,5 +1,5 @@
 import React from "react"
-import {View, Text} from "react-native"
+import {View, Text, Button} from "react-native"
 
 const MealDetailsScreen = props => {
     return (
@@ -7,6 +7,11 @@ const MealDetailsScreen = props => {
             <Text>
                 Meal Screen
             </Text>
+            <Button
+                title="Go to categories"
+                onPress={() => {
+                    props.navigation.popToTop() // Takes us back to the root screen
+                }}/>
         </View>
     )
 }
