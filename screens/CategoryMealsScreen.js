@@ -1,52 +1,31 @@
 import React from "react"
-import {View, FlatList, Button, Text} from "react-native"
 import {CATEGORIES} from "../data/dummy-data"
 import MealItem from "../components/MealItem";
+import MealsList from "../components/MealsList";
 
 const CategoryMealsScreen = props => {
     const categoryID = props.navigation.getParam("categoryID")
 
     const displayedMeals = CATEGORIES.filter((meal) => meal.categoryID.contains(categoryID))
 
-    const renderMeal = (itemData) => {
-        return (
-            <MealItem title={itemData.item.title}
-                      duration={itemData.item.duration}
-                      complexity={itemData.item.complexity}
-                      affordability={itemData.item.affordability}
-                      imageUrl={itemData.item.imageUrl}
-                      onSelect={
-                          // TODO
-                      }/>
-        )
-    }
-
     return (
-        <View style={styles.container}>
-            <FlatList
-                style={{width: "100%"}}
-                keyExtractor={(item, _) => item.id}
-                data={displayedMeals}
-                renderItem={}/>
-            <Button
-                title="See details"
-                onPress={() => {
+        <MealsList
+            list={displayedMeals}
+            onItemSelected={(selectedMeal) => {
                     props.navigation.navigate({
-                        routeName: "MealDetailScreen"
+                        routeName: "MealDetailScreen",
+                        params: {
+                            mealID: selectedMeal.id
+                        }
                     })
-                }}/>
-            <Button
-                title="Go back"
-                onPress={() => {
-                    props.navigation.pop()
-                }}/>
-        </View>
+                }
+            }/>
     )
 }
 
 // As we can see the navigationOptions can be used as an object as well as a function
 CategoryMealsScreen.navigationOptions = (navigationData) => {
-const categoryID = navigationData.navigation.getParam("categoryID")
+    const categoryID = navigationData.navigation.getParam("categoryID")
 
     const selectedCategory = CATEGORIES.find((category) => category.id === categoryID)
 
@@ -56,11 +35,3 @@ const categoryID = navigationData.navigation.getParam("categoryID")
 }
 
 export default CategoryMealsScreen
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    }
-})

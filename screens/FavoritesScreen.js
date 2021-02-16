@@ -5,10 +5,14 @@ const FavoritesScreen = props => {
     return (
         <View style={styles.container}>
             <Text>
-                Favorites Screen
+                Dummy favorites
             </Text>
         </View>
     )
+}
+
+FavoritesScreen.navigationOptions = {
+    headerTitle: "Your favorites"
 }
 
 const styles = StyleSheet.create({
