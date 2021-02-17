@@ -2,10 +2,19 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import * as Font from "expo-font"
 import {AppLoading} from "expo"
-import MealsNavigator from "./navigation/MealsNavigator";
+import MealsNavigator from "./navigation/MealsNavigator"
 import {enableScreens} from "react-native-screens" // This will use Fragment in Android and UIViewController for iOS for performance improvements
+import {createStore, combineReducers} from "redux"
+import mealsReducer from "./store/reducers/meals";
+import {Provider} from "react-redux" // Store needs to be in the top most component
 
 enableScreens()
+
+const rootReducer = combineReducers({
+    meals: mealsReducer
+})
+
+const store = createStore(rootReducer)
 
 const fetchFonts = () => {
     Font.loadAsync({
@@ -30,7 +39,10 @@ export default function App() {
     }
 
     return (
-        <MealsNavigator/>
+        <Provider
+            store={store}>
+            <MealsNavigator/>
+        </Provider>
     );
 }
 

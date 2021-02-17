@@ -1,5 +1,21 @@
 import Category from "../models/category";
-import Meal from "../models/Meal" // TODO add meals for each category
+import Meal from "../models/Meal"
+
+export const MEALS = [
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true),
+    new Meal("m1", ["c1", "c2"], "$$", "medium", "url", 4, ["water", "rice"], ["s1", "s2", "s3"], true, true, false, true)
+]
+
 
 export const CATEGORIES = [
     new Category("c1", "Italian", "#fafafa"),
